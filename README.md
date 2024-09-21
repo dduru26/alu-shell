@@ -1,1 +1,1 @@
-A script for a shell 
+Collection of shell scripts
