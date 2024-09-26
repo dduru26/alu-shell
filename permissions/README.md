@@ -1,0 +1,1 @@
+THis is a directory story some more scripts for the shell, permissionns exercise
