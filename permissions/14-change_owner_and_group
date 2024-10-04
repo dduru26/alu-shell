@@ -1,7 +1,2 @@
 #!/bin/bash
-
-# Change the owner to vincent and the group owner to staff for all files and directories
 chown vincent:staff *
-
-# Print a message when done
-echo "Owner changed to 'vincent' and group owner changed to 'staff' for all files and directories."
