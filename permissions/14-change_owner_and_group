@@ -1,3 +1,2 @@
 #!/bin/bssh
 chown vincent:staff *
-
