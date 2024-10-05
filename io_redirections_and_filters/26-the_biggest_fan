@@ -1,2 +1,2 @@
 #!/bin/bash
-awk '{count[$1]++} END {for (host in count) print host, count[host] | "sort -k2,2nr | head -n 11"}' input_file.tsv
+sort input_file.tsv | uniq -c | sort -nr | head -n 11
