@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# This script manages the process 'manage_my_process.sh' by starting, stopping, or restarting it.
+# Usage: manage_my_process {start|stop|restart}
+
+PROCESS_NAME="manage_my_process.sh"
+PID_FILE="/var/run/my_process.pid"
+
+start_process() {
+    if [ -f "$PID_FILE" ]; then
+        echo "Process already running with PID $(cat $PID_FILE)"
+        exit 1
+    fi
+
+    # Start the process and save its PID
+    nohup ./$PROCESS_NAME > /dev/null 2>&1 &
+    echo $! > "$PID_FILE"
+    echo "manage_my_process started"
+}
+
+stop_process() {
+    if [ ! -f "$PID_FILE" ]; then
+        echo "Process is not running"
+        exit 1
+    fi
+
+    # Stop the process using the PID
+    kill "$(cat "$PID_FILE")"  # Fixed SC2046 by quoting
+    rm -f "$PID_FILE"
+    echo "manage_my_process stopped"
+}
+
+restart_process() {
+    stop_process
+    start_process
+    echo "manage_my_process restarted"
+}
+
+# Main control logic
+case "$1" in
+    start)
+        start_process
+        ;;
+    stop)
+        stop_process
+        ;;
+    restart)
+        restart_process
+        ;;
+    *)
+        echo "Usage: manage_my_process {start|stop|restart}"
+        exit 1
+        ;;
+esac
