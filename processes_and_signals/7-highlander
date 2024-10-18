@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# This script handles both running an infinite loop and stopping it using pkill
+
+if [ "$1" == "start" ]; then
+    # Terminal #0: Run the infinite loop process
+    echo "Starting the 7-highlander process..."
+    
+    trap 'echo "I am invincible!!!"' SIGTERM
+
+    while true; do
+        echo "To infinity and beyond"
+        sleep 2
+    done
+
+elif [ "$1" == "stop" ]; then
+    # Terminal #1: Stop the running process
+    echo "Stopping the 7-highlander process..."
+    pkill -f 67-stop_me_if_you_can
+else
+    echo "Usage: $0 {start|stop}"
+fi
