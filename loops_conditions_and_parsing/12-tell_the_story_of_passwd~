@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script formats and displays user information from /etc/passwd.
+
+while IFS=: read -r username _ group_id _ home_directory shell _; do
+    user_id_info=$(getent passwd "$username" | awk -F: '{print $3}')
+    password=$(getent shadow "$username" | awk -F: '{print $2}')  # Only available if run as root or user has access
+    echo "The user $username is part of the $group_id gang, lives in $home_directory and rides $shell. User ID's place is protected by the passcode $password, more info about the user here: $user_id_info."
+done < /etc/passwd
