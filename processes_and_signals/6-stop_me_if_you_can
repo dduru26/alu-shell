@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # This script stops the 4-to_infinity_and_beyond process without using kill or killall.
 
-echo "Stopping the 4-to_infinity_and_beyond process."
-echo 0 > "/proc/$(pgrep -f 4-to_infinity_and_beyond)/oom_score_adj"
+pkill -f 4-to_infinity_and_beyond
