@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# This script displays a list of all currently running processes for all users, showing process hierarchy.
+# This script displays the UID of all currently running processes.
 
-ps -e -f
-echo ""
-pstree -p
+ps -e -o uid --no-headers
