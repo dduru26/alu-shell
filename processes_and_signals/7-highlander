@@ -14,8 +14,7 @@ if [ "$1" == "start" ]; then
 
 elif [ "$1" == "stop" ]; then
     # Terminal #1: Stop the running process
-    echo "Stopping the 7-highlander process..."
-    pkill -f 67-stop_me_if_you_can
+    pkill -f 67-stop_me_if_you_can && echo "OK"
 else
     echo "Usage: $0 {start|stop}"
 fi
