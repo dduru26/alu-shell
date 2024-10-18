@@ -1,0 +1,1 @@
+This is a directory containing shell scripts that tdeal with shell, loops, conditions, and parsing.
