@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
-# This script displays the UID of all currently running processes.
-
-ps -e -o uid --no-headers
+#!/usr/bin/env bash                                                                                                                   
+# This script displays a list of all currently running processes with process hierary                                                 
+ps aux --forest
